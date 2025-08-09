@@ -1,31 +1,16 @@
-pkgname=ravi
-pkgver=1.0.beta7
+# Maintainer: Ravi Kiran <ravi742t7p@gmail.com>
+pkgname=ravikiran-portfolio
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='A derivative of Lua 5.3 with limited optional static typing and LLVM and libgccjit based JIT compilers'
-arch=(i686 x86_64)
-url='https://github.com/dibyendumajumdar/ravi'
-license=(MIT)
-makedepends=(cmake git)
-source=('git+https://github.com/dibyendumajumdar/ravi.git#tag=1.0-beta7')
-sha1sums=('SKIP')
-
-pkgver() {
-  cd ravi
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd ravi
-  sed -i 's/usr\/local/usr/' include/luaconf.h
-}
-
-build() {
-  cd ravi
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE .
-  make
-}
+pkgdesc="Terminal-based interactive portfolio of Ravi Kiran"
+arch=('any')
+url="https://github.com/RaviKiran752/ravikiran-portfolio"
+license=('MIT')
+depends=('python' 'python-rich')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-  cd ravi
-  make DESTDIR="$pkgdir" install
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 portfolio.py "$pkgdir/usr/bin/ravikiran"
 }
