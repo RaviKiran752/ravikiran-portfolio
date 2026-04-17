@@ -1,6 +1,6 @@
 # Maintainer: Ravi Kiran <ravi742t7p@gmail.com>
 pkgname=ravikiran-portfolio
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal-based interactive portfolio of Ravi Kiran"
 arch=('any')
